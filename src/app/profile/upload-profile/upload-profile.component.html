@@ -1,0 +1,91 @@
+<!-- color picket in chrome? -->
+
+<div class="container mt-4">
+    <h1 class="common-text-color display-4">Settings</h1>
+    <div class="row">
+        <div class="col-12">
+            <mat-tab-group>
+                <mat-tab label="Profile">
+
+                    <form class="mt-5">
+                        <div class="row">
+                            <!-- upload photo -->
+                            <div class="col-12">
+                                <img src="../../../assets//dummy-profile-pic.png" alt="profile-pic"
+                                    class="img-fluid rounded-pill mr-4" style="height: 10em;width: 10em;">
+                                <a href="#">Upload Photo</a>
+                            </div>
+
+                            <div class="col-12 mt-5">
+                                <div class="row">
+                                    <!-- first name -->
+                                    <div class="col-12 col-md-6">
+                                        <label class="font-weight-bold">First name</label>
+                                        <div>
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <input type="text" matInput placeholder="Enter First Name">
+                                              </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <!-- Last name -->
+                                    <div class="col-12 col-md-6">
+                                        <label class="font-weight-bold">Last name</label>
+                                        <div>
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <input type="text" matInput placeholder="Enter Last Name">
+                                              </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <!-- Email -->
+                                    <div class="col-12 col-md-6">
+                                        <label class="font-weight-bold">Email</label>
+                                        <div>
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <input type="email" matInput placeholder="Enter Email ID">
+                                              </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <!-- Mobile No -->
+                                    <div class="col-12 col-md-6">
+                                        <label class="font-weight-bold">Mobile Number</label>
+                                        <div>
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <input type="tel" matInput placeholder="Enter Mobile Number">
+                                              </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <!-- Documents -->
+                                    <div class="col-12 col-md-6">
+                                        <label class="font-weight-bold">Documents</label>
+                                        <div>
+                                            <input type="file" placeholder="Upload Documents">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 my-5">
+                                        <div class="row">
+                                            <div class="col-6 col-md-3">
+                                                <button type="submit" class="w-100 p-2 text-white" mat-raised-button style="background-color: #24ade1;">Upload</button>
+                                            </div>
+                                            <div class="col-6 col-md-3">
+                                                <button type="button" class="w-100 p-2" mat-stroked-button color="primary" [routerLink]="['../']">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+
+                </mat-tab>
+                <mat-tab label="Account/Notifications"> No Notifications </mat-tab>
+                <mat-tab label="Interests"> Will inform later </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
