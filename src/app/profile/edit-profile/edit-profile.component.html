@@ -4,13 +4,14 @@
     <h1 class="common-text-color">Edit Profile</h1>
     <div class="row">
         <div class="col-12">
-            <form class="mt-5">
+            <form class="mt-5" [formGroup]="editProfileForm">
                 <div class="row">
                     <!-- upload photo -->
                     <div class="col-12">
-                        <img src="../../../assets//dummy-profile-pic.png" alt="profile-pic"
+                        <input type="file" hidden #profilepic (change)="handleImageChange($event);">
+                        <img [src]="profilePicImage" alt="profile-pic"
                             class="img-fluid rounded-pill mr-4" style="height: 10em;width: 10em;">
-                        <a href="#">Upload Photo</a>
+                            <a (click)="profilepic.click()">Upload Photo</a>
                     </div>
 
                     <div class="col-12 mt-5">
@@ -20,7 +21,7 @@
                                 <label class="font-weight-bold">First name</label>
                                 <div>
                                     <mat-form-field appearance="outline" class="w-100">
-                                        <input type="text" matInput placeholder="Enter First Name">
+                                        <input type="text" matInput placeholder="Enter First Name" formControlName="firstName">
                                       </mat-form-field>
                                 </div>
                             </div>
@@ -29,7 +30,7 @@
                                 <label class="font-weight-bold">Last name</label>
                                 <div>
                                     <mat-form-field appearance="outline" class="w-100">
-                                        <input type="text" matInput placeholder="Enter Last Name">
+                                        <input type="text" matInput placeholder="Enter Last Name" formControlName="lastName">
                                       </mat-form-field>
                                 </div>
                             </div>
@@ -38,7 +39,7 @@
                                 <label class="font-weight-bold">Email</label>
                                 <div>
                                     <mat-form-field appearance="outline" class="w-100">
-                                        <input type="email" matInput placeholder="Enter Email ID">
+                                        <input type="email" matInput placeholder="Enter Email ID" formControlName="email">
                                       </mat-form-field>
                                 </div>
                             </div>
@@ -47,7 +48,7 @@
                                 <label class="font-weight-bold">Mobile Number</label>
                                 <div>
                                     <mat-form-field appearance="outline" class="w-100">
-                                        <input type="tel" matInput placeholder="Enter Mobile Number">
+                                        <input type="tel" matInput placeholder="Enter Mobile Number" formControlName="mobileNo">
                                       </mat-form-field>
                                 </div>
                             </div>
@@ -56,17 +57,20 @@
                             <div class="col-12 col-md-6">
                                 <label class="font-weight-bold">Documents</label>
                                 <div>
-                                    <input type="file" placeholder="Upload Documents">
+                                    <input type="file" placeholder="Upload Documents" (change)="handleChange($event)" multiple>
+                                    <div *ngFor="let doc of this.profileData?.documents;">
+                                        <a [href]="doc" target="_blank">doc</a>
+                                    </div>
                                 </div>
                             </div>
                             
                             <div class="col-12 my-5">
                                 <div class="row">
                                     <div class="col-6 col-md-3">
-                                        <button type="submit" class="w-100 p-2 text-white" mat-raised-button style="background-color: #24ade1;" >Save</button>
+                                        <button type="submit" class="w-100 p-2 text-white" mat-raised-button style="background-color: #24ade1;" (click)="updateProfile()">Save</button>
                                     </div>
                                     <div class="col-6 col-md-3">
-                                        <button type="button" class="w-100 p-2" mat-stroked-button color="primary" [routerLink]="['../../overview']">Cancel</button>
+                                        <button type="button" class="w-100 p-2" mat-stroked-button color="primary" [routerLink]="['/profile', profileData?._id, 'overview']">Cancel</button>
                                     </div>
                                 </div>
                             </div>

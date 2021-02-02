@@ -7,13 +7,14 @@
             <mat-tab-group>
                 <mat-tab label="Profile">
 
-                    <form class="mt-5">
+                    <form class="container-fluid mt-5" [formGroup]="uploadProfileForm">
                         <div class="row">
                             <!-- upload photo -->
                             <div class="col-12">
-                                <img src="../../../assets//dummy-profile-pic.png" alt="profile-pic"
+                                <input type="file" hidden #profilepic (change)="handleImageChange($event);">
+                                <img [src]="profilePicAddress" alt="profile-pic" 
                                     class="img-fluid rounded-pill mr-4" style="height: 10em;width: 10em;">
-                                <a href="#">Upload Photo</a>
+                                <a (click)="profilepic.click()">Upload Photo</a>
                             </div>
 
                             <div class="col-12 mt-5">
@@ -23,8 +24,11 @@
                                         <label class="font-weight-bold">First name</label>
                                         <div>
                                             <mat-form-field appearance="outline" class="w-100">
-                                                <input type="text" matInput placeholder="Enter First Name">
-                                              </mat-form-field>
+                                                <input type="text" matInput placeholder="Enter First Name" formControlName="firstName">
+                                                <mat-error *ngIf="uploadProfileForm.get('firstName')?.errors?.required">
+                                                    First Name is required
+                                                </mat-error>
+                                            </mat-form-field>
                                         </div>
                                     </div>
                                     <!-- Last name -->
@@ -32,8 +36,11 @@
                                         <label class="font-weight-bold">Last name</label>
                                         <div>
                                             <mat-form-field appearance="outline" class="w-100">
-                                                <input type="text" matInput placeholder="Enter Last Name">
-                                              </mat-form-field>
+                                                <input type="text" matInput placeholder="Enter Last Name" formControlName="lastName">
+                                                <mat-error *ngIf="uploadProfileForm.get('lastName')?.errors?.required">
+                                                    Last Name is required
+                                                </mat-error>
+                                            </mat-form-field>
                                         </div>
                                     </div>
                                     <!-- Email -->
@@ -41,8 +48,14 @@
                                         <label class="font-weight-bold">Email</label>
                                         <div>
                                             <mat-form-field appearance="outline" class="w-100">
-                                                <input type="email" matInput placeholder="Enter Email ID">
-                                              </mat-form-field>
+                                                <input type="email" matInput placeholder="Enter Email ID" formControlName="email">
+                                                <mat-error *ngIf="uploadProfileForm.get('email')?.errors?.required">
+                                                    Email ID is required
+                                                </mat-error>
+                                                <mat-error *ngIf="uploadProfileForm.get('email')?.errors?.email">
+                                                    Please enter Valid Email Id
+                                                </mat-error>
+                                            </mat-form-field>
                                         </div>
                                     </div>
                                     <!-- Mobile No -->
@@ -50,8 +63,17 @@
                                         <label class="font-weight-bold">Mobile Number</label>
                                         <div>
                                             <mat-form-field appearance="outline" class="w-100">
-                                                <input type="tel" matInput placeholder="Enter Mobile Number">
-                                              </mat-form-field>
+                                                <input type="tel" matInput placeholder="Enter Mobile Number" formControlName="mobileNo">
+                                                <mat-error *ngIf="uploadProfileForm.get('mobileNo')?.errors?.required">
+                                                    Mobile Number is required
+                                                </mat-error>
+                                                <mat-error *ngIf="uploadProfileForm.get('mobileNo')?.errors?.minlength">
+                                                    Mobile Number length must be min 10
+                                                </mat-error>
+                                                <mat-error *ngIf="uploadProfileForm.get('mobileNo')?.errors?.maxlength">
+                                                    Mobile Number length cant be more than 10
+                                                </mat-error>
+                                            </mat-form-field>
                                         </div>
                                     </div>
 
@@ -59,29 +81,27 @@
                                     <div class="col-12 col-md-6">
                                         <label class="font-weight-bold">Documents</label>
                                         <div>
-                                            <input type="file" placeholder="Upload Documents">
+                                            <input type="file" placeholder="Upload Documents" multiple (change)="handleChange($event)">
                                         </div>
                                     </div>
 
                                     <div class="col-12 my-5">
                                         <div class="row">
                                             <div class="col-6 col-md-3">
-                                                <button type="submit" class="w-100 p-2 text-white" mat-raised-button style="background-color: #24ade1;">Upload</button>
+                                                <button type="submit" class="w-100 p-2 text-white" mat-raised-button
+                                                    style="background-color: #24ade1;"
+                                                    (click)="uploadProfile()" [disabled]="uploadProfileForm.invalid">Upload</button>
                                             </div>
                                             <div class="col-6 col-md-3">
-                                                <button type="button" class="w-100 p-2" mat-stroked-button color="primary" [routerLink]="['../']">Cancel</button>
+                                                <button type="button" class="w-100 p-2" mat-stroked-button
+                                                    color="primary" [routerLink]="['/profile']">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </form>
-
-
                 </mat-tab>
                 <mat-tab label="Account/Notifications"> No Notifications </mat-tab>
                 <mat-tab label="Interests"> Will inform later </mat-tab>

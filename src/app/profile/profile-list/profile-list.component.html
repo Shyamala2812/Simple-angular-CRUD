@@ -1,14 +1,16 @@
-<div style="height: 100vh;background-color: black;">
+<div style="height: 100vh;">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 p-5 rounded" style="background-color: white;">
                 <h1 class="common-text-color">Profile List</h1>
+                <button class="float-right text-white mb-3" mat-raised-button style="background-color: #24ade1;"
+                    [routerLink]="['upload']">Upload profile</button>
                 <div class="table-responsive">
                     <table class="table table-borderless">
                         <thead>
                             <tr>
                                 <th scope="col">S.No</th>
-                                <th scope="col">ID</th>
+                                <!-- <th scope="col">ID</th> -->
                                 <th scope="col">FirstName</th>
                                 <th scope="col">LastName</th>
                                 <th scope="col">Email</th>
@@ -18,12 +20,15 @@
                         <tbody>
                             <tr *ngFor="let profile of profileList; let i = index;">
                                 <td>{{i+1}}</td>
-                                <td>1</td>
-                                <td>Shyamala</td>
-                                <td>R</td>
-                                <td>shyama28.raji@gmail.com</td>
+                                <!-- <td>1</td> -->
+                                <td>{{profile.firstName}}</td>
+                                <td>{{profile.lastName}}</td>
+                                <td>{{profile.email}}</td>
                                 <td>
-                                    <button mat-raised-button class="text-white" type="button" [routerLink]="['overview']" [queryParams]="{id: 1}" style="background-color: #24ade1;">Click</button>
+                                    <button mat-raised-button class="text-white mr-2" type="button"
+                                        [routerLink]="[profile._id, 'overview']"
+                                        style="background-color: #24ade1;">Click</button>
+                                        <button type="button" mat-stroked-button color="warn" (click)="deleteProfile(profile?._id)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>

@@ -21,7 +21,7 @@
                                         <label class="font-weight-bold">First name:</label>
                                     </div>
                                     <div class="col-4">
-                                        <span>Shyamala</span>
+                                        <span>{{profileData?.firstName}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                                         <label class="font-weight-bold">Last name:</label>
                                     </div>
                                     <div class="col-4">
-                                        <span>R</span>
+                                        <span>{{profileData?.lastName}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                         <label class="font-weight-bold">Email:</label>
                                     </div>
                                     <div class="col-4">
-                                        <span>shyama28.raji@gmail.com</span>
+                                        <span>{{profileData?.email}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                         <label class="font-weight-bold">Mobile Number:</label>
                                     </div>
                                     <div class="col-4">
-                                        <span>9044538541</span>
+                                        <span>{{profileData?.mobileNo}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -65,15 +65,15 @@
                                     <div class="col-4">
                                         <label class="font-weight-bold">Documents:</label>
                                     </div>
-                                    <div class="col-4">
-                                        <span>Docs List</span>
+                                    <div class="col-4" *ngFor="let data of profileData?.documents">
+                                        <span class="d-block">{{data}}</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12 col-md-3 mt-5">
                                 <button type="button" class="w-100 p-2 text-white" mat-raised-button
-                                style="background-color: #24ade1;" [routerLink]="['../../overview']">Back</button>
+                                style="background-color: #24ade1;" [routerLink]="['/profile', profileData?._id, 'overview']">Back</button>
                             </div>
                         </div>
                     </div>

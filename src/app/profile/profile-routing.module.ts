@@ -24,7 +24,7 @@ const routes: Routes = [
     component: ViewProfileComponent
   },
   {
-    path: 'overview',
+    path: ':id/overview',
     component: DisplayProfileComponent
   }
 ];

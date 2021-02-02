@@ -13,13 +13,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DisplayProfileComponent } from './display-profile/display-profile.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const materialModules = [
   MatTabsModule,
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
