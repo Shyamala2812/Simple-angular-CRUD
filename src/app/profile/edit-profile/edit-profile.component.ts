@@ -68,11 +68,9 @@ export class EditProfileComponent implements OnInit {
 
   async updateProfile(): Promise<void> {
     try {
-      console.log(this.editProfileForm.value,'jjjjjjjjjjjjjjj')
       const id = this.route.snapshot.paramMap.get('id');
       const data = {...this.editProfileForm.value, profilePicture: this.profilePicImage};
       const a = await this.profileservice.updateSpecificProfileDetails(id, data);
-      console.log(a,'kkkkkkkkkkkkkkkk')
       this.snackbar.open('uploaded successfully', 'close', {duration: 3000});
       this.router.navigate(['profile', id, 'overview']);
     } catch (error) {
